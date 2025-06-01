@@ -1,4 +1,35 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState } from 'react';
+import { Alert } from '../types/Alert';
+import AlertDetails from './AlertDetails';
+
+type Globe3DProps = {
+  alerts: Alert[];
+};
+
+export default function Globe3D({ alerts }: Globe3DProps) {
+  const [selectedAlert, setSelectedAlert] = useState<Alert | null>(null);
+
+  return (
+    <div className="globe-3d-container" style={{ height: 600, width: "100%", background: "#101a2a" }}>
+      <div style={{ color: "#fff", padding: 12 }}>
+        <b>Globe interactif 3D (prototype)</b> : 
+        Navigation libre, zoom, et affichage des alertes multi-désastres (y compris spatiales) à venir ici.
+      </div>
+      <ul>
+        {alerts.map(alert => (
+          <li key={alert.id} style={{ color: "#ffe082", cursor: "pointer" }}
+              onClick={() => setSelectedAlert(alert)}>
+            <span role="img" aria-label={alert.type}>
+              {alert.icon ?? "⚠️"}
+            </span>{" "}
+            [{alert.severity.toUpperCase()}] {alert.label}
+          </li>
+        ))}
+      </ul>
+      <AlertDetails alert={selectedAlert} onClose={() => setSelectedAlert(null)} />
+    </div>
+  );
+}import React, { useEffect, useRef } from 'react';
 import Globe from 'react-globe.gl';
 
 type Alert = {
