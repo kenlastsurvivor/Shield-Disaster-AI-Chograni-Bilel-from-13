@@ -1,4 +1,64 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import Globe3D from './components/Globe3D';
+import SurvivalAdvice from './components/SurvivalAdvice';
+
+const mockAlerts = [
+  {
+    id: 'tokyo2024',
+    lat: 35.68,
+    lng: 139.69,
+    type: 'earthquake',
+    label: 'Séisme Tokyo',
+    severity: 'high',
+    icon: '🌏',
+    details: 'Secousse détectée à Tokyo, magnitude 6.2',
+    startTime: '2025-06-01T22:32:00Z'
+  },
+  {
+    id: 'saopaulo-flood',
+    lat: -23.55,
+    lng: -46.63,
+    type: 'flood',
+    label: 'Inondation São Paulo',
+    severity: 'moderate',
+    icon: '🌊',
+    details: 'Rivière Tietê sortie de son lit.',
+    startTime: '2025-06-01T22:00:00Z'
+  },
+  {
+    id: 'california-fire',
+    lat: 37.77,
+    lng: -122.42,
+    type: 'fire',
+    label: 'Incendie Californie',
+    severity: 'critical',
+    icon: '🔥',
+    details: 'Feu de forêt en progression rapide.',
+    startTime: '2025-06-01T21:30:00Z'
+  }
+];
+
+function App() {
+  const [activeType, setActiveType] = useState<string>('generic');
+
+  const handleVoiceCommand = useCallback((text: string) => {
+    // Optionnel: gestion commande vocale
+  }, []);
+
+  return (
+    <div>
+      <header>
+        <h1>Shield Disaster AI</h1>
+      </header>
+      <main>
+        <Globe3D alerts={mockAlerts} />
+        <SurvivalAdvice type={activeType} />
+      </main>
+    </div>
+  );
+}
+
+export default App;import React, { useState } from 'react';
 import { Alert } from '../types/Alert';
 import AlertDetails from './AlertDetails';
 
