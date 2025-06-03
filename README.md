@@ -121,3 +121,14 @@ PostgreSQL 15 (TimescaleDB)
 
 # Frontend
 React 18 + MapLibre GL JS
+## 👤 Auteur / Créateur
+
+**kenlastsurvivor (Bilel Chograni)**  
+- [GitHub](https://github.com/kenlastsurvivor)
+- [Twitter : @Bilchog13](https://twitter.com/Bilchog13)
+- Email : Bil.chog13@gmail.com
+
+Créateur unique et propriétaire de l’application, du code et de la feuille de route.  
+Tout le projet, ses évolutions et sa vision sont conçus, développés et maintenus par chograni bilel (kenlastsurvivor.)
+
+© 2025 Bilel Chograni – Tous droits réservés.
