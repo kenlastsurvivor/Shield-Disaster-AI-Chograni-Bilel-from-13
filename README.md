@@ -72,7 +72,15 @@ npm run dev
 
 ## 📝 License
 
-This project is open-source under the GNU GPLv3 license. Contributions are welcome via pull requests.
+Copyright (c) 2025 Chograni Bilel, né le 05/08/81 à Marseille
+
+Tous droits réservés / All rights reserved
+
+Ce dépôt et son contenu sont la propriété exclusive de Chograni Bilel.  
+Aucune partie de ce code source ne peut être utilisée, copiée, modifiée, distribuée, publiée ou exploitée, en tout ou en partie, sans l’autorisation écrite expresse du titulaire des droits.
+
+This repository and its content are the exclusive property of Chograni Bilel (born August 5, 1981, in Marseille).  
+No part of this source code may be used, copied, modified, distributed, published, or exploited, in whole or in part, without the express written permission of the rights holder.
 
 ---
 
