@@ -9,10 +9,25 @@
     "react-globe.gl": "^5.0.7",
     "three": "^0.158.0"
   },
+  "devDependencies": {
+    "typescript": "^4.9.5",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-react-app": "^7.0.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "lint": "echo \"No linter configured\""
+    "test": "react-scripts test --watchAll=false",
+    "lint": "eslint src --ext .ts,.tsx"
   }
 }

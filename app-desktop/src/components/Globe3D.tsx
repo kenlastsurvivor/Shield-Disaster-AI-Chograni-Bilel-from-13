@@ -5,11 +5,17 @@ import AlertDetails from './AlertDetails';
 
 type Globe3DProps = {
   alerts: Alert[];
+  onSelectAlert?: (alert: Alert | null) => void;
 };
 
-export default function Globe3D({ alerts }: Globe3DProps) {
+export default function Globe3D({ alerts, onSelectAlert }: Globe3DProps) {
   const globeEl = useRef<any>();
-  const [selectedAlert, setSelectedAlert] = useState<Alert | null>(null);
+  const [selectedAlert, setSelectedAlertState] = useState<Alert | null>(null);
+
+  const setSelectedAlert = (alert: Alert | null) => {
+    setSelectedAlertState(alert);
+    onSelectAlert?.(alert);
+  };
 
   // Calculate points for the alerts
   const alertPoints = alerts.map(alert => ({
