@@ -1,49 +1,31 @@
-import React, { useCallback, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import Home from './components/Home';
-import VoiceCommand from './components/VoiceCommand';
-import Globe3D from './components/Globe3D';
-import OfflineStatus from './components/OfflineStatus';
-import SurvivalAdvice from './components/SurvivalAdvice';
+import React from 'react';
 
-const mockAlerts = [
-  { lat: 35.68, lng: 139.69, type: 'earthquake', label: 'Séisme Tokyo' },
-  { lat: -23.55, lng: -46.63, type: 'flood', label: 'Inondation São Paulo' },
-  { lat: 37.77, lng: -122.42, type: 'fire', label: 'Incendie Californie' }
-];
+type SurvivalAdviceProps = {
+  type: string;
+  onClose?: () => void;
+};
 
-const mockForecasts = [
-  { lat: 15.87, lng: 100.99, risk: 'cyclone', label: 'Risque cyclone Thaïlande' }
-];
+const ADVICE: Record<string, string> = {
+  earthquake: "Éloignez-vous des fenêtres, abritez-vous sous une table solide.",
+  flood: "Montez en hauteur, coupez l'électricité, préparez un kit d'urgence.",
+  fire: "Évacuez si possible, couvrez-vous la bouche, restez près du sol.",
+  cyclone: "Restez à l'abri au centre du bâtiment, préparez de l'eau et des vivres.",
+  generic: "Restez calme et suivez les instructions officielles."
+};
 
-function App() {
-  const { t } = useTranslation();
-  const [activeType, setActiveType] = useState<string>('generic');
-
-  const handleVoiceCommand = useCallback((text: string) => {
-    alert(`${t('voiceRecognized')}: ${text}`);
-    // Détection simple pour afficher le conseil adapté
-    if (/séisme|earthquake/i.test(text)) setActiveType('earthquake');
-    else if (/inondation|flood/i.test(text)) setActiveType('flood');
-    else if (/feu|fire/i.test(text)) setActiveType('fire');
-    else if (/cyclone/i.test(text)) setActiveType('cyclone');
-    else setActiveType('generic');
-  }, [t]);
-
+export default function SurvivalAdvice({ type, onClose }: SurvivalAdviceProps) {
   return (
-    <div>
-      <header>
-        <h1>{t('welcomeTitle')}</h1>
-        <OfflineStatus />
-      </header>
-      <main>
-        <Home />
-        <VoiceCommand onCommand={handleVoiceCommand} />
-        <Globe3D alerts={mockAlerts} forecasts={mockForecasts} />
-        <SurvivalAdvice type={activeType} />
-      </main>
+    <div style={{
+      background: '#1b2233', color: '#fff', borderRadius: 10, padding: 18, marginTop: 16,
+      border: '1px solid #394060'
+    }}>
+      <h3 style={{ marginTop: 0 }}>Conseil de survie</h3>
+      <p>{ADVICE[type] ?? ADVICE.generic}</p>
+      {onClose && (
+        <button onClick={onClose} style={{ background: 'transparent', color: '#aaa', border: 'none', cursor: 'pointer' }}>
+          Fermer
+        </button>
+      )}
     </div>
   );
 }
-
-export default App;
