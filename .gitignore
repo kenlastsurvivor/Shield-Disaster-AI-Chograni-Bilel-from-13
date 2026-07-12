@@ -224,3 +224,19 @@ dist/
 .env.production.local
 
 # By Chograni Bilel 05/08/81 Marseille
+
+# Node / React (app-desktop)
+node_modules/
+app-desktop/build/
+app-desktop/.env.local
+
+# Machine learning models (trop volumineux / doivent être déployés séparément)
+*.pkl
+*.h5
+
+# Archives ne doivent pas être versionnées
+*.zip
+
+# Env files potentiellement sensibles
+.env
+.env.*.local
